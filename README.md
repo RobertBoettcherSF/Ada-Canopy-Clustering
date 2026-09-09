@@ -3,8 +3,8 @@
 Educational, self-contained Ada 2023 package for the
 [Wikipedia: Canopy clustering algorithm](https://en.wikipedia.org/wiki/Canopy_clustering_algorithm)
 (**McCallum, Nigam, Ungar**, *KDD 2000*): unsupervised **pre-clustering** with
-a loose distance threshold \(T_1\) and a tight threshold \(T_2\)
-(\(T_1 > T_2 > 0\)).
+a loose distance threshold $T_1$ and a tight threshold $T_2$
+($T_1 > T_2 > 0$).
 
 Canopies are cheap approximate groups that may **overlap** (a point can belong
 to several canopies). They are often used as preprocessing for
@@ -20,9 +20,9 @@ Part of the **RobertBoettcherSF** Ada algorithm series. Sibling package:
 1. Begin with the set of data points.
 2. Remove a point from the set; start a new canopy containing it (the
    **center**).
-3. For each remaining point: if distance to the canopy center \(< T_1\),
+3. For each remaining point: if distance to the canopy center $< T_1$,
    assign it to this canopy (multi-membership allowed).
-4. If the distance is additionally \(< T_2\), remove it from the original set
+4. If the distance is additionally $< T_2$, remove it from the original set
    (it cannot become the center of another canopy).
 5. Repeat until the set is empty.
 
@@ -36,10 +36,10 @@ the pool; remaining points are scanned in ascending index order.
 
 | Concern | Approach | Notes |
 | --- | --- | --- |
-| Thresholds | \(T_1 > T_2 > 0\) | Loose / tight |
+| Thresholds | $T_1 > T_2 > 0$ | Loose / tight |
 | Distance | Euclidean L2 | Same metric for both steps |
 | Membership | Multi-label | Point may join several canopies |
-| Pool removal | \(d < T_2\) | Cannot center later |
+| Pool removal | $d < T_2$ | Cannot center later |
 | Center pick | Lowest pool index | Stable / deterministic |
 | Hard labels | Nearest center or first canopy | Optional exclusive labels |
 
@@ -55,7 +55,7 @@ the pool; remaining points are scanned in ascending index order.
 | Run | `Run_Canopy`, `Canopy_Count_Of`, `Point_In_Canopy`, `Canopies_Of` | Core API |
 | Hard labels | `Hard_Labels_Nearest_Center`, `Hard_Labels_First_Canopy` | Exclusive labels |
 
-Named exceptions: `Invalid_Argument` (e.g. \(T_1 \le T_2\)),
+Named exceptions: `Invalid_Argument` (e.g. $T_1 \le T_2$),
 `Capacity_Exceeded`.
 
 ## Curse of dimensionality
